@@ -1,0 +1,41 @@
+{% extends 'UmamiGastroApp/base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Index
+{% endblock titulo %}
+
+{% block main %}
+        <section class="page-section clearfix">
+            <div class="container">
+                <div class="intro">
+                    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'UmamiGastroApp/assets/img/intro.jpg' %}" alt="..." />
+                    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-upper">Taste Of Tokyo</span>
+                            <span class="section-heading-lower">Experiencia culinaria japonesa</span>
+                        </h2>
+                        <p class="mb-3">Cada bocado de nuestro exquisito sushi comienza con ingredientes cuidadosamente seleccionados de origen local, ofreciéndote una experiencia gastronómica excepcional. Una vez que lo pruebes, descubrirás una explosión de sabores que despertarán tus sentidos. Nuestro sushi se convertirá en una deliciosa adición a tu rutina nocturna, brindándote un verdadero sabor de Japón. ¡Te lo garantizamos!</p>
+                        <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="{% url 'UmamiGastroApp:horarios' %}">Visitanos Hoy!</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page-section cta">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <div class="cta-inner bg-faded text-center rounded">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">Nuestra Promesa</span>
+                                <span class="section-heading-lower">Hacia Ti</span>
+                            </h2>
+                            <p class="mb-0">En Taste Of Tokyo, nuestra promesa es brindarte productos de calidad excepcional y una experiencia gratificante. Nos esforzamos por superar tus expectativas con nuestro servicio y los ingredientes de primera calidad que utilizamos. Tu satisfacción es nuestra prioridad y estamos comprometidos a asegurarnos de que tu visita sea memorable. ¡Gracias por elegir Taste Of Tokyo!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock main %}
+

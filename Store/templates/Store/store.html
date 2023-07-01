@@ -1,0 +1,44 @@
+{% extends 'UmamiGastroApp/base.html' %}
+
+{% block titulo %}
+    Store
+{% endblock titulo %}
+
+{% block main %}
+<p></p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                {% for producto in productos %}
+                <div class="col-md-4">
+                    <div class="card mb-4" style="width: 100%; margin: 5px 5px;">
+                        <img src="{{ producto.imagen.url }}" class="card-img-top">
+                        <div class="card-body" style="text-align: center;">
+                            <h5 class="card-title" style="height: 3em; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0;">{{ producto.nombre }}</h5>
+                            <h5 class="card-title" style="height: 3em; font-size: smaller; margin-top: 0;">&nbsp;</h5>
+                            <p class="card-text">{{ producto.precio }}&nbsp;$</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-secondary">Agregar al Carro</a> 
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                    </div><div class="row">
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div style="color: white;">
+                {% if request.user.is_authenticated %}
+                    {% include "carro/widget.html" %}
+                {% else %}    
+                    <div class="alert alert-danger text-center">Login para ver Carro</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}

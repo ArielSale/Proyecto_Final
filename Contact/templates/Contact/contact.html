@@ -1,0 +1,75 @@
+{% extends 'UmamiGastroApp/base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    ContactMe
+{% endblock titulo %}
+
+{% block main %}
+    <!-- Contact Section-->
+    <section class="page-section" id="contact">
+        <div class="container">
+            <!-- Contact Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+            <p></p>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Contact Section Form-->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                    <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="{% url 'Contact:contact' %}"  method="POST">
+                        {% csrf_token %}
+
+                        {% if "valido" in request.GET %}
+                             <p>Gracias por tu mensaje!</p>
+                        {% endif %}
+                    
+                        <!-- Nombre y Apellido input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" name="{{ formulario_contacto.nombre.name }}">
+                            <label for="name">{{ formulario_contacto.nombre.label }}</label>
+                            {% if formulario_contacto.nombre.errors %}
+                                {% for error in formulario_contacto.nombre.errors %}
+                                    <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="invalid-feedback">A name is required.</div>
+                            {% endif %}
+                        </div>
+                        <!-- Email input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" name="{{ formulario_contacto.email.name }}">
+                            <label for="email">{{ formulario_contacto.email.label }}</label>
+                            {% if formulario_contacto.email.errors %}
+                                {% for error in formulario_contacto.email.errors %}
+                                    <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="invalid-feedback">An email is required.</div>
+                            {% endif %}
+                        </div>
+                        <!-- Mensaje input-->
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="message" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required" name="{{ formulario_contacto.mensaje.name }}"></textarea>
+                            <label for="message">{{ formulario_contacto.mensaje.label }}</label>
+                            {% if formulario_contacto.mensaje.errors %}
+                                {% for error in formulario_contacto.mensaje.errors %}
+                                    <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="invalid-feedback">A message is required.</div>
+                            {% endif %}
+                        </div>
+                        <!-- Submit Button-->
+                        <button class="btn btn-primary btn-xl" id="submitButton" type="submit" value="Enviar">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock main %}

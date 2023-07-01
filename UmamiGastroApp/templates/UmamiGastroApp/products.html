@@ -1,0 +1,65 @@
+{% extends 'UmamiGastroApp/base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Products
+{% endblock titulo %}
+
+{% block main %}
+        <section class="page-section">
+            <div class="container">
+                <div class="product-item">
+                    <div class="product-item-title d-flex">
+                        <div class="bg-faded p-5 d-flex ms-auto rounded">
+                            <h2 class="section-heading mb-0">
+                                <span class="section-heading-upper">Fusión de Sabores</span>
+                                <span class="section-heading-lower">El Arte del Sushi</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'UmamiGastroApp/assets/img/products-01.jpg' %}" alt="..." />
+                    <div class="product-item-description d-flex me-auto">
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">Sumérgete en el arte culinario del sushi, donde cada bocado es una fusión de sabores exquisitos. Descubre una experiencia gastronómica única, donde la frescura de los ingredientes se combina a la perfección para crear platos llenos de sabor y armonía. Bienvenido al apasionante mundo del sushi, donde cada rollo es una obra maestra que deleitará tus sentidos.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page-section">
+            <div class="container">
+                <div class="product-item">
+                    <div class="product-item-title d-flex">
+                        <div class="bg-faded p-5 d-flex me-auto rounded">
+                            <h2 class="section-heading mb-0">
+                                <span class="section-heading-upper">Sabores Deliciosos, Postres Exquisitos</span>
+                                <span class="section-heading-lower">Repostería Japonesa</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'UmamiGastroApp/assets/img/products-02.jpg' %}" alt="..." />
+                    <div class="product-item-description d-flex ms-auto">
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">Déjate cautivar por las dulces delicias y sabores exquisitos de la repostería japonesa. Descubre un mundo de postres únicos que te transportarán a Japón con cada bocado. Nuestro acogedor espacio es el lugar perfecto para disfrutar de auténticos postres japoneses preparados con pasión y cuidado. Bienvenido a nuestra repostería, donde cada dulce es una obra de arte para disfrutar.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page-section">
+            <div class="container">
+                <div class="product-item">
+                    <div class="product-item-title d-flex">
+                        <div class="bg-faded p-5 d-flex ms-auto rounded">
+                            <h2 class="section-heading mb-0">
+                                <span class="section-heading-upper">Un Complemento Perfecto</span>
+                                <span class="section-heading-lower">Exquisitas Bebidas Japonesas</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static 'UmamiGastroApp/assets/img/products-03.jpg' %}" alt="..." />
+                    <div class="product-item-description d-flex me-auto">
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">Explora los sabores distintivos y descubre nuestras refrescantes bebidas que complementan nuestros platos japoneses. Cada sorbo es un deleite para los sentidos, aportando armonía y frescura a tu experiencia culinaria. Nuestras bebidas japonesas, cuidadosamente seleccionadas, realzan la autenticidad de nuestros platos y te ofrecen un verdadero festín para el paladar. Sumérgete en un mundo de sabores cautivadores y encuentra la bebida perfecta para complementar tu experiencia gastronómica en nuestro establecimiento.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock main %}
+

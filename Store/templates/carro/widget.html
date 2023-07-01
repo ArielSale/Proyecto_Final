@@ -1,0 +1,104 @@
+<style>
+    .carro-table {
+        background-color: #e9e9e9;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .carro-table th {
+        background-color: #e9e9e9;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .carro-table td {
+        background-color: #fff;
+        color: #333;
+    }
+
+    .carro-buttons a {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #666;
+        color: #fff;
+        border-radius: 50%;
+        margin-right: 5px;
+        text-decoration: none;
+    }
+
+    .carro-total {
+        background-color: #e9e9e9;
+        color: #333;
+        font-weight: bold;
+        text-align: right;
+    }
+</style>
+
+<table class="table carro-table">
+    <thead>
+        <p></p>
+        <tr>
+            <th colspan="3" class="text-center">
+                Carro de Compras
+            </th>
+        </tr>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if request.session.carro.items %}
+            {% for key, value in request.session.carro.items %}
+                <tr class="text-center">
+                    <td>{{value.nombre}}</td>
+                    <td>{{value.cantidad}}</td>
+                    <td>
+                        <div class="carro-buttons">
+                            <a href="{% url 'carro:agregar' value.producto_id %}">+</a>
+                            <a href="{% url 'carro:restar' value.producto_id %}">-</a>
+                        </div>
+                        {{value.precio}} $
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="3">
+                    <div class="alert alert-danger text-center">
+                        Sin Productos
+                    </div>
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="carro-total">
+                Total: {{importe_total_carro}} $
+            </td>
+        </tr>
+        {% if request.session.carro.items %}
+        <tr>
+            <td colspan="3" style="text-align: center">
+                <form method="POST" action="{% url 'pedidos:procesar_pedido' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-secondary">Hacer Pedido</button>
+                </form>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success text-center">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+    </tfoot>
+</table>

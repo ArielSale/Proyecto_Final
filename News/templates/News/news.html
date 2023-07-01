@@ -1,0 +1,33 @@
+{% extends 'UmamiGastroApp/base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    News
+{% endblock titulo %}
+
+{% block main %}
+
+<p></p>
+<p></p>
+
+{% for post in posts %}
+  <div class="blog-post">
+    <div class="blog-image">
+      <a href="{{ post.url }}" target="_blank">
+        <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}">
+      </a>
+    </div>
+    <div class="blog-content">
+      <h2 class="title"><a href="{{ post.url }}" target="_blank">{{ post.titulo }}</a></h2>
+      <p class="content">{{ post.contenido }}</p>
+      <div class="category">
+        <span class="category-label">Categoría: </span>
+        <span class="category-name">{{ post.categorias.first.nombre }}</span>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+
+{% endblock main %}
